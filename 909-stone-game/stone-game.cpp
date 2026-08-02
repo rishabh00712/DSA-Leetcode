@@ -1,18 +1,16 @@
 class Solution {
 public:
-    int solve(vector<int>& nums, int i, int j, vector<vector<int>>& dp) {
-        if (i == j) return nums[i];
+    int solve(vector<int>& piles,int i,int j,vector<vector<int>>& dp){
+        if(i==j) return piles[i];
+        if(dp[i][j]!=INT_MIN) return dp[i][j];
 
-        if (dp[i][j] != -1) return dp[i][j];
-
-        int takeLeft = nums[i] - solve(nums, i + 1, j, dp);
-        int takeRight = nums[j] - solve(nums, i, j - 1, dp);
-
-        return dp[i][j] = max(takeLeft, takeRight);
+        int takeL=piles[i]-solve(piles,i+1,j,dp);
+        int takeR=piles[j]-solve(piles,i,j-1,dp);
+        return dp[i][j]=max(takeL,takeR);
     }
-    bool stoneGame(vector<int>& nums) {
-        int n = nums.size();
-        vector<vector<int>> dp(n, vector<int>(n, -1));
-        return solve(nums, 0, n - 1, dp) >= 0;
+    bool stoneGame(vector<int>& piles) {
+        int n=piles.size();
+        vector<vector<int>> dp(n,vector<int>(n,INT_MIN));
+        return solve(piles,0,n-1,dp)>0;
     }
 };
