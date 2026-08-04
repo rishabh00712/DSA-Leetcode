@@ -11,7 +11,7 @@ public:
         while (low <= high) {
             int i = (low + high) / 2;
             int j = (n + m + 1) / 2 - i;
-            cout<<i<<"i j"<<j<<endl;
+            //cout<<i<<"i j"<<j<<endl;
             int l1 = (i == 0) ? INT_MIN : nums1[i - 1];
             int l2 = (j == 0) ? INT_MIN : nums2[j - 1];
             int r1 = (i == n) ? INT_MAX : nums1[i];
