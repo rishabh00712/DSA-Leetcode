@@ -4,7 +4,7 @@ public:
         int product=1;
         while(n>0){
             product*=(n%10);
-            cout<<product<<endl;
+           
             n/=10;
         }
         return product%t==0 ? true : false;
