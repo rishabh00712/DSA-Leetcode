@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> resultArray(vector<int>& nums) {
+        vector<int> nums1;
+        vector<int> nums2;
+        nums1.push_back(nums[0]);
+        nums2.push_back(nums[1]);
+        for(int i=2;i<nums.size();i++){
+            int n1=nums1.size()-1;
+            int n2=nums2.size()-1;
+            if(nums1[n1]>nums2[n2]){
+                nums1.push_back(nums[i]);
+            }else{
+                nums2.push_back(nums[i]);
+            }
+        }
+        for(int i=0;i<nums1.size();i++){
+            nums[i]=nums1[i];
+        }
+        int ind=0;
+        for(int i=nums1.size();i<nums.size();i++){
+            nums[i]=nums2[ind++];
+        }
+        return nums;
+    }
+};
