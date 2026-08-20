@@ -20,7 +20,7 @@ public:
                 if(val>top && val>bottom && val>left && val>right){
                     return {i,mid};
                 }
-                if(right>left){
+                if(right>left){//we are looking for the maximum here be carful
                     l=mid+1;
                 }else{
                     r=mid-1;
