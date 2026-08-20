@@ -14,13 +14,9 @@ public:
                 nums2.push_back(nums[i]);
             }
         }
-        for(int i=0;i<nums1.size();i++){
-            nums[i]=nums1[i];
+        for(int i=0;i<nums2.size();i++){
+            nums1.push_back(nums2[i]);
         }
-        int ind=0;
-        for(int i=nums1.size();i<nums.size();i++){
-            nums[i]=nums2[ind++];
-        }
-        return nums;
+        return nums1;
     }
 };
