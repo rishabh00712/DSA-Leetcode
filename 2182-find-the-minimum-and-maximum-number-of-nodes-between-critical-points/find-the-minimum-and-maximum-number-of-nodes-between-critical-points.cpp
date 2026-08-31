@@ -28,9 +28,7 @@ public:
             ind++;
             temp=temp->next;
         }
-        for(auto n : list){
-            cout<<n<<endl;
-        }
+       
         int n=list.size();
         if(n<2) return {-1,-1};
         int maxi=list[n-1]-list[0];
