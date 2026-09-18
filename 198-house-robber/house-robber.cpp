@@ -2,18 +2,34 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         int n=nums.size();
-        vector<int> dp(n+1,0);
+       
         //base case
-        dp[n]=0;
-        dp[n-1]=nums[n-1];
+        int pre_pre=0;
+        int pre=nums[n-1];
         for(int i=n-2;i>=0;i--){
-            int take=nums[i]+dp[i+2];
-            int non_take=dp[i+1];
-            dp[i]=max(take,non_take);
+            int temp=max(nums[i]+pre_pre,pre);
+            pre_pre=pre;
+            pre=temp;
         }
-        return dp[0];
+        return pre;
     }
 };
+// class Solution {
+// public:
+//     int rob(vector<int>& nums) {
+//         int n=nums.size();
+//         vector<int> dp(n+1,0);
+//         //base case
+//         dp[n]=0;
+//         dp[n-1]=nums[n-1];
+//         for(int i=n-2;i>=0;i--){
+//             int take=nums[i]+dp[i+2];
+//             int non_take=dp[i+1];
+//             dp[i]=max(take,non_take);
+//         }
+//         return dp[0];
+//     }
+// };
 
 // class Solution {
 // public:
