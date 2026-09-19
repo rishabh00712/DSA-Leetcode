@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool dpFun(string s,int ind,unordered_set<string>& myset,vector<int>& dp){
-        if(ind>s.size()-1){
+        if(ind==s.size()){
             return true;
         }
         if(dp[ind]!=-1)return dp[ind];
