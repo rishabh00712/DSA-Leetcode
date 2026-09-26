@@ -6,7 +6,6 @@ public:
             key.push_back(s[i]);
             i++;
         }
-        cout<<key<<endl;
         return key;
     }
     string evaluate(string s, vector<vector<string>>& knowledge) {
