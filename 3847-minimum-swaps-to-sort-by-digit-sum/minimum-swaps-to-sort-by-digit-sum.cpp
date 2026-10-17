@@ -21,9 +21,6 @@ public:
     int minSwaps(vector<int>& nums) {
         vector<int> unsortedNum=nums;
         sort(nums.begin(),nums.end(),cmp);
-        for(auto n : nums){
-            cout<<n<<endl;
-        }
         int n=nums.size();
         vector<bool> vis(n,false);
         unordered_map<int,int> mapNumInd;
