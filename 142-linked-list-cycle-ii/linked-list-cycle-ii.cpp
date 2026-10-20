@@ -6,18 +6,47 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+
+//  class Solution {
+// public:
+//     ListNode *detectCycle(ListNode *head) {
+//         unordered_set<ListNode*> storeList;
+//         ListNode* temp=head;
+//         while(temp){
+//             if(storeList.find(temp)!=storeList.end()){
+//                 return temp;
+//             }
+//             storeList.insert(temp);
+//             temp=temp->next;
+//         }
+//         return nullptr;
+//     }
+// };
+
+// O(n) + O(n)
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-        unordered_set<ListNode*> storeList;
-        ListNode* temp=head;
-        while(temp){
-            if(storeList.find(temp)!=storeList.end()){
-                return temp;
+        ListNode* slow=head;
+        ListNode* fast=head;
+        bool hasLoop=false;
+        while(fast && fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
+
+            if(slow==fast){
+                hasLoop=true;
+                break;
             }
-            storeList.insert(temp);
-            temp=temp->next;
         }
-        return nullptr;
+        if(!hasLoop) return nullptr;
+
+        slow=head;
+        while(slow!=fast){
+            slow=slow->next;
+            fast=fast->next;
+        }
+        return slow;
     }
 };
