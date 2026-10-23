@@ -18,7 +18,6 @@ public:
         int n=board.size();
         myqueue.push(1);
         int num=-1;
-        int ans=INT_MAX;
         vector<int> vis(n*n+1,0);
         while(!myqueue.empty()){
             int size=myqueue.size();
@@ -27,7 +26,6 @@ public:
             for(int i=0;i<size;i++){
                 int topVal=myqueue.front();
                 if(topVal==n*n){
-                    ans=min(ans,num);
                     return num;
                 }
                 for(int j=1;j<=6;j++){
@@ -48,7 +46,7 @@ public:
                 myqueue.pop();
             }
         }
-        return ans==INT_MAX ? -1 : ans; 
+        return -1; 
     }
 };
 
