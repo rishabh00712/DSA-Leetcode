@@ -18,7 +18,26 @@ public:
     }
     int numDecodings(string s) {
         int n=s.size();
-        vector<int> dp(n,-1);
-        return dpFun(0,s,n,dp);
+        vector<int> dp(n+1,-1);
+        // return dpFun(0,s,n,dp);
+
+        dp[n]=1;
+        for(int i=n-1;i>=0;i--){
+            if(s[i]=='0') dp[i]=0;
+            else{
+                int takeOneChar=dp[i+1];
+                int takeTwoChar=0;
+                if(i!=n-1){
+                    string str;
+                    str.push_back(s[i]);
+                    str.push_back(s[i+1]);
+                    if(str<="26"){
+                        takeTwoChar=dp[i+2];
+                    }
+                }
+                dp[i]=takeOneChar+takeTwoChar;
+            }
+        }
+        return dp[0];
     }
 };
